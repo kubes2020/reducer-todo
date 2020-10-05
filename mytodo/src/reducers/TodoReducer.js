@@ -25,10 +25,3 @@ export const reducer = (state, action) => {
       return state;
   }
 };
-
-// {
-//   ...state,
-//   item: action.payload,
-//   completed: false,
-//   id: new Date(),
-// }

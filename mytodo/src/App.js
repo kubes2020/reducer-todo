@@ -18,6 +18,8 @@ function App() {
     dispatch({ type: "ADD-TODO", payload: todoState });
   };
 
+  const handleChange = (e) => {};
+
   return (
     <div className="App">
       <form onSubmit={onSubmit}>
@@ -30,15 +32,13 @@ function App() {
             onChange={onChange}
             value={todoState}
           ></input>
-          <button
-          // onClick={() => dispatch({ type: "ADD-TODO", payload: todoState })}
-          >
-            Submit
-          </button>
+          <button>Submit</button>
         </label>
       </form>
       {state.map((i) => (
-        <h3>{i.item}</h3>
+        <div className="todo-container" onClick={handleChange}>
+          <h3 key={i.id}>{i.item}</h3>
+        </div>
       ))}
     </div>
   );
