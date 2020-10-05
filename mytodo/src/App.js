@@ -1,8 +1,6 @@
 import React, { useState, useReducer } from "react";
 import "./App.css";
 import { initialState, reducer } from "./reducers/TodoReducer";
-// const firstAction = { type: "INCREMENT" };
-// initialState = reducer(initialState, firstAction);
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -15,13 +13,14 @@ function App() {
     setTodoState(e.target.value);
   };
 
-  // const onSubmit = (e) => {
-  //   e.preventDefault();
-  // };
+  const onSubmit = (e) => {
+    e.preventDefault();
+    dispatch({ type: "ADD-TODO", payload: todoState });
+  };
 
   return (
     <div className="App">
-      <form>
+      <form onSubmit={onSubmit}>
         <label htmlFor="todo">
           ToDo
           <input
@@ -32,13 +31,15 @@ function App() {
             value={todoState}
           ></input>
           <button
-            onClick={() => dispatch({ type: "ADD-TODO", payload: todoState })}
+          // onClick={() => dispatch({ type: "ADD-TODO", payload: todoState })}
           >
             Submit
           </button>
         </label>
       </form>
-      <h3>{state.item}</h3>
+      {state.map((i) => (
+        <h3>{i.item}</h3>
+      ))}
     </div>
   );
 }
