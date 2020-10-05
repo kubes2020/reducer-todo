@@ -1,28 +1,25 @@
 import React, { useState, useReducer } from "react";
 import "./App.css";
 import { initialState, reducer } from "./reducers/TodoReducer";
+import Form from "./components/Form";
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
   console.log("reducer state", state);
 
-  const [todoState, setTodoState] = useState();
-
-  const onChange = (e) => {
-    e.persist();
-    setTodoState(e.target.value);
-  };
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-    dispatch({ type: "ADD-TODO", payload: todoState });
-  };
-
-  const handleChange = (e) => {};
+  // dispatch({ type: "ADD-TODO", payload: todoState });
 
   return (
     <div className="App">
-      <form onSubmit={onSubmit}>
+      <Form dispatch={dispatch} state={state} />
+    </div>
+  );
+}
+
+export default App;
+
+{
+  /* <form onSubmit={onSubmit}>
         <label htmlFor="todo">
           ToDo
           <input
@@ -39,9 +36,5 @@ function App() {
         <div className="todo-container" onClick={handleChange}>
           <h3 key={i.id}>{i.item}</h3>
         </div>
-      ))}
-    </div>
-  );
+      ))} */
 }
-
-export default App;
