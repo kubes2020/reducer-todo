@@ -8,10 +8,14 @@ export const initialState = {
 
 export const reducer = (state, action) => {
   switch (action.type) {
-    // case "Just a Test":
-    //     return {
-    //         ...state, completed: !state.completed
-    //     }
+    case "ADD-TODO":
+      console.log("add-todo is working");
+      return {
+        ...state,
+        item: action.payload,
+        // completed: false,
+        // id: new Date(),
+      };
 
     default:
       return state;
