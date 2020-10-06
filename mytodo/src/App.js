@@ -6,7 +6,7 @@ import Form from "./components/Form";
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
   // console.log("dispatch", dispatch);
-
+  console.log("this is state", state);
   return (
     <div className="App">
       <Form dispatch={dispatch} state={state} />
@@ -22,6 +22,9 @@ function App() {
           </h3>
         </div>
       ))}
+      <button onClick={() => dispatch({ type: "DELETE-COMPLETED" })}>
+        Delete Selected
+      </button>
     </div>
   );
 }

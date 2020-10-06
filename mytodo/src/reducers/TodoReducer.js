@@ -29,7 +29,20 @@ export const reducer = (state, action) => {
           if (item.id === action.payload) {
             return (item.completed = !item.completed);
           } else {
-            return state;
+            return item;
+          }
+        }),
+      ];
+
+    case "DELETE-COMPLETED":
+      console.log("delete activated");
+      return [
+        ...state,
+        state.filter((item) => {
+          if (item.completed === true) {
+            return {};
+          } else {
+            return item;
           }
         }),
       ];
