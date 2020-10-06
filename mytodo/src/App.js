@@ -7,11 +7,6 @@ function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
   // console.log("dispatch", dispatch);
 
-  // const handleChange = (e) => {
-  //   console.log("handle change!", e);
-  //   dispatch({ type: "TOGGLE-COMPLETED", payload: e.target.key });
-  // };
-
   return (
     <div className="App">
       <Form dispatch={dispatch} state={state} />
