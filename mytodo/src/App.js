@@ -5,14 +5,14 @@ import Form from "./components/Form";
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
-  // console.log("dispatch", dispatch);
-  console.log("this is state", state);
+
   return (
     <div className="App">
       <Form dispatch={dispatch} state={state} />
       {state.map((i) => (
         <div className="todo-container">
           <h3
+            className={i.completed ? "line-through" : "no-line"}
             key={i.id}
             onClick={() =>
               dispatch({ type: "TOGGLE-COMPLETED", payload: i.id })
@@ -30,24 +30,3 @@ function App() {
 }
 
 export default App;
-
-{
-  /* <form onSubmit={onSubmit}>
-        <label htmlFor="todo">
-          ToDo
-          <input
-            name="todo"
-            id="todo"
-            type="text"
-            onChange={onChange}
-            value={todoState}
-          ></input>
-          <button>Submit</button>
-        </label>
-      </form>
-      {state.map((i) => (
-        <div className="todo-container" onClick={handleChange}>
-          <h3 key={i.id}>{i.item}</h3>
-        </div>
-      ))} */
-}

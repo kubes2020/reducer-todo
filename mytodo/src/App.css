@@ -24,6 +24,10 @@
   color: white;
 }
 
+.line-through {
+  text-decoration: line-through;
+}
+
 .App-link {
   color: #61dafb;
 }

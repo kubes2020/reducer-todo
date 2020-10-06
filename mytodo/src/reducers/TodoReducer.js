@@ -22,32 +22,57 @@ export const reducer = (state, action) => {
       ];
 
     case "TOGGLE-COMPLETED":
-      console.log("it's toggle time!");
-      return [
-        ...state,
-        state.map((item) => {
-          if (item.id === action.payload) {
-            return (item.completed = !item.completed);
-          } else {
-            return item;
-          }
-        }),
-      ];
+      return state.map((item) => {
+        return item.id === action.payload
+          ? { ...item, completed: !item.completed }
+          : item;
+      });
 
     case "DELETE-COMPLETED":
       console.log("delete activated");
-      return [
-        ...state,
-        state.filter((item) => {
-          if (item.completed === true) {
-            return {};
-          } else {
-            return item;
-          }
-        }),
-      ];
+      return state.filter((item) => !item.completed);
 
     default:
       return state;
   }
 };
+
+//Return statements didn't work when on a different line
+// case "DELETE-COMPLETED":
+//       console.log("delete activated");
+//       return [
+//         ...state,
+//         state.filter((item) => {
+//           if (item.completed === true) {
+//             return {};
+//           } else {
+//             return item;
+//           }
+//         }),
+//       ];
+
+// This one almost worked
+// case "DELETE-COMPLETED":
+//       console.log("delete activated");
+//       return{
+//       state.filter((item) => {
+//         item.completed === true ? {} : item;
+//       })
+//     }
+
+// case "DELETE-COMPLETED":
+//       console.log("delete activated");
+//       return [
+//         ...state,
+//         state.filter((item) => {
+//           if (item.completed === true) {
+//             return {};
+//           } else {
+//             return item;
+//           }
+//         }),
+//       ];
+
+//     default:
+//       return state;
+//   }

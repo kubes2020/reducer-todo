@@ -13,10 +13,6 @@ const Form = (props) => {
     props.dispatch({ type: "ADD-TODO", payload: todoState });
   };
 
-  //   const handleChange = (e) => {
-  //     console.log("handle change!");
-  //     props.dispatch({ type: "TOGGLE-COMPLETED", payload: props.state.id });
-  //   };
   return (
     <>
       <form onSubmit={onSubmit}>
@@ -32,11 +28,6 @@ const Form = (props) => {
           <button>Submit</button>
         </label>
       </form>
-      {/* {props.state.map((i) => (
-        <div className="todo-container">
-          <h3 onClick={handleChange}>{i.item}</h3>
-        </div>
-      ))} */}
     </>
   );
 };
