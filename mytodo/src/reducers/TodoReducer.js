@@ -9,7 +9,7 @@ export const initialState = [
 ];
 
 export const reducer = (state, action) => {
-  console.log("add-todo is working");
+  console.log("add-todo is working, action", action);
   switch (action.type) {
     case "ADD-TODO":
       return [
@@ -21,7 +21,21 @@ export const reducer = (state, action) => {
         },
       ];
 
+    case "TOGGLE-COMPLETED":
+      return state;
+
     default:
       return state;
   }
 };
+
+// case "TOGGLE-COMPLETED":
+//   return [
+//     ...state.map((item) => {
+//       if (item.id === action.payload) {
+//         {...item, completed: true}
+//       } else {
+//         return state;
+//       }
+//     }),
+//   ];

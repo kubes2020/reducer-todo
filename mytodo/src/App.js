@@ -5,13 +5,28 @@ import Form from "./components/Form";
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
-  console.log("reducer state", state);
+  // console.log("dispatch", dispatch);
 
-  // dispatch({ type: "ADD-TODO", payload: todoState });
+  // const handleChange = (e) => {
+  //   console.log("handle change!", e);
+  //   dispatch({ type: "TOGGLE-COMPLETED", payload: e.target.key });
+  // };
 
   return (
     <div className="App">
       <Form dispatch={dispatch} state={state} />
+      {state.map((i) => (
+        <div className="todo-container">
+          <h3
+            key={i.id}
+            onClick={() =>
+              dispatch({ type: "TOGGLE-COMPLETED", payload: i.id })
+            }
+          >
+            {i.item}
+          </h3>
+        </div>
+      ))}
     </div>
   );
 }
